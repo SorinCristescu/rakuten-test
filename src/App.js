@@ -14,20 +14,21 @@ import ErrorBoundary from './components/ErrorBoundary';
 import Loader from './components/Loader';
 import Layout from './layout';
 
-const App = () => (
-  <div className="container">
-    <GlobalStyle />
-    <Layout>
-      <ErrorBoundary>
-        <Suspense fallback={<Loader />}>
-          <Switch>
-            <Route path="/" exact component={Home} />
-            <Route path="/movie" exact component={Movie} />
-          </Switch>
-        </Suspense>
-      </ErrorBoundary>
-    </Layout>
-  </div>
-);
-
+const App = () => {
+  return (
+    <div className="container">
+      <GlobalStyle />
+      <Layout>
+        <ErrorBoundary>
+          <Suspense fallback={<Loader />}>
+            <Switch>
+              <Route path="/" exact component={Home} />
+              <Route path="/movie" exact component={Movie} />
+            </Switch>
+          </Suspense>
+        </ErrorBoundary>
+      </Layout>
+    </div>
+  );
+};
 export default App;

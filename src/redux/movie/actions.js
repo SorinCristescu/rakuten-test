@@ -4,16 +4,19 @@ import {
   GET_MOVIE_BY_ID_START,
   GET_MOVIE_BY_ID_SUCCESS,
   GET_MOVIE_BY_ID_FAIL,
+  GET_TRAILER_BY_ID_START,
+  GET_TRAILER_BY_ID_SUCCESS,
+  GET_TRAILER_BY_ID_FAIL,
 } from './types';
 
-// Fetch latest movies list.
-export const getMovieById = () => async (dispatch) => {
+// Get movie by ID.
+export const getMovieById = (id) => async (dispatch) => {
   dispatch({
     type: GET_MOVIE_BY_ID_START,
   });
   try {
     const response = await axios.get(
-      `${process.env.BASE_URL}/movie/latest?api_key=${process.env.TMDB_API_KEY}`
+      `${process.env.PROXY_URL}${process.env.BASE_URL}/movies/${id}${process.env.QUERY_PARAMS}`
     );
     dispatch({
       type: GET_MOVIE_BY_ID_SUCCESS,
@@ -22,6 +25,29 @@ export const getMovieById = () => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: GET_MOVIE_BY_ID_FAIL,
+      payload: error.response.data.errorCode,
+    });
+    console.log(error);
+  }
+};
+
+// Get trailer by ID.
+export const getTrailerById = (id) => async (dispatch) => {
+  dispatch({
+    type: GET_TRAILER_BY_ID_START,
+  });
+  try {
+    const response = await axios.post(
+      `${process.env.PROXY_URL}${process.env.BASE_URL}/me/streamings${process.env.QUERY_PARAMS}`,
+      JSON.stringify({ ...process.env.CONFIG_PLAYER, content_id: id })
+    );
+    dispatch({
+      type: GET_TRAILER_BY_ID_SUCCESS,
+      payload: response.data,
+    });
+  } catch (error) {
+    dispatch({
+      type: GET_TRAILER_BY_ID_FAIL,
       payload: error.response.data.errorCode,
     });
     console.log(error);
