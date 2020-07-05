@@ -12,8 +12,11 @@ import {
 // Styles
 import { PageContainer } from './style';
 
+// Components
+import Carousel from '../../components/Carousel';
+
 const Home = () => {
-  const popularMovies = useSelector((state) => state.lists.popularMovies);
+  const popularesMovies = useSelector((state) => state.lists.popularesMovies);
   const todaLaFamiliaMovies = useSelector(
     (state) => state.lists.todaLaFamiliaMovies
   );
@@ -26,6 +29,7 @@ const Home = () => {
   const estrenosImprescindiblesMovies = useSelector(
     (state) => state.lists.estrenosImprescindiblesMovies
   );
+  const loadingList = useSelector((state) => state.lists.loading);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -38,10 +42,14 @@ const Home = () => {
     }
     fetchMovies();
   }, []);
-  console.log(popularMovies);
+
   return (
     <PageContainer>
-      <h1>Home page</h1>
+      <Carousel list={!loadingList && popularesMovies} />
+      <Carousel list={!loadingList && todaLaFamiliaMovies} />
+      <Carousel list={!loadingList && estrenosSpaniolesMovies} />
+      <Carousel list={!loadingList && nuestraPreferidasMovies} />
+      <Carousel list={!loadingList && estrenosImprescindiblesMovies} />
     </PageContainer>
   );
 };

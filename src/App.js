@@ -23,7 +23,7 @@ const App = () => {
           <Suspense fallback={<Loader />}>
             <Switch>
               <Route path="/" exact component={Home} />
-              <Route path="/movie" exact component={Movie} />
+              <Route path="/movie/:id" exact component={Movie} />
             </Switch>
           </Suspense>
         </ErrorBoundary>
