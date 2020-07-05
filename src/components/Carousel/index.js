@@ -27,20 +27,20 @@ const SamplePrevArrow = (props) => {
 };
 
 const Carousel = (props) => {
-  const { name, movies } = props.list;
-
-  //   console.log('========================');
-  //   console.log(props.list.data.name);
-  //   console.log(movies);
+  const title = props.list.data.name;
+  const movies = props.list.data.contents.data;
+  console.log('========================');
+  console.log(title);
+  console.log(movies);
   const settings = {
-    speed: 2000,
+    speed: 3000,
     slidesToShow: 6,
     slidesToScroll: 1,
     initialSlide: 6,
     centerMode: 'true',
     centerPadding: '20px',
     autoplay: true,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 1000,
     cssEase: 'linear',
     pauseOnHover: true,
     infinite: true,
@@ -80,13 +80,12 @@ const Carousel = (props) => {
 
   return (
     <CarouselContainer>
-      <CarouselTitle>{name && name.data.name}</CarouselTitle>
+      <CarouselTitle>{title}</CarouselTitle>
       <CarouselBody>
         <Slider {...settings}>
-          {movies &&
-            movies.data.contents.data.map((movie) => (
-              <MovieCard key={movie.numerical_id} movie={movie} />
-            ))}
+          {movies.map((movie) => (
+            <MovieCard key={movie.numerical_id} movie={movie} />
+          ))}
         </Slider>
       </CarouselBody>
     </CarouselContainer>

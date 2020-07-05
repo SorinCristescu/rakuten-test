@@ -42,16 +42,19 @@ const Home = () => {
     }
     fetchMovies();
   }, []);
-
-  return (
-    <PageContainer>
-      <Carousel list={!loadingList && popularesMovies} />
-      <Carousel list={!loadingList && todaLaFamiliaMovies} />
-      <Carousel list={!loadingList && estrenosSpaniolesMovies} />
-      <Carousel list={!loadingList && nuestraPreferidasMovies} />
-      <Carousel list={!loadingList && estrenosImprescindiblesMovies} />
-    </PageContainer>
-  );
+  if (!loadingList) {
+    return (
+      <PageContainer>
+        <Carousel list={popularesMovies} />
+        <Carousel list={todaLaFamiliaMovies} />
+        <Carousel list={estrenosSpaniolesMovies} />
+        <Carousel list={nuestraPreferidasMovies} />
+        <Carousel list={estrenosImprescindiblesMovies} />
+      </PageContainer>
+    );
+  } else {
+    return null;
+  }
 };
 
 export default Home;

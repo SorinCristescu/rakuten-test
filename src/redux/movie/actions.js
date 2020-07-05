@@ -16,7 +16,7 @@ export const getMovieById = (id) => async (dispatch) => {
   });
   try {
     const response = await axios.get(
-      `${process.env.PROXY_URL}${process.env.BASE_URL}/movies/${id}${process.env.QUERY_PARAMS}`
+      `${process.env.BASE_URL}/movies/${id}${process.env.QUERY_PARAMS}`
     );
     dispatch({
       type: GET_MOVIE_BY_ID_SUCCESS,
@@ -38,7 +38,7 @@ export const getTrailerById = (id) => async (dispatch) => {
   });
   try {
     const response = await axios.post(
-      `${process.env.PROXY_URL}${process.env.BASE_URL}/me/streamings${process.env.QUERY_PARAMS}`,
+      `${process.env.BASE_URL}/me/streamings${process.env.QUERY_PARAMS}`,
       JSON.stringify({ ...process.env.CONFIG_PLAYER, content_id: id })
     );
     dispatch({

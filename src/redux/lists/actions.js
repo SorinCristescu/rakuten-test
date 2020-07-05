@@ -25,7 +25,7 @@ export const getPopularesEnTaquillaList = () => async (dispatch) => {
   });
   try {
     const response = await axios.get(
-      `${process.env.PROXY_URL}${process.env.BASE_URL}/lists/populares-en-taquilla${process.env.QUERY_PARAMS}`
+      `${process.env.BASE_URL}/lists/populares-en-taquilla${process.env.QUERY_PARAMS}`
     );
     dispatch({
       type: GET_MOVIES_POPULARES_SUCCESS,
@@ -47,7 +47,7 @@ export const getEstrenosImprescindibleList = () => async (dispatch) => {
   });
   try {
     const response = await axios.get(
-      `${process.env.PROXY_URL}${process.env.BASE_URL}/lists/estrenos-imprescindibles-en-taquilla${process.env.QUERY_PARAMS}`
+      `${process.env.BASE_URL}/lists/estrenos-imprescindibles-en-taquilla${process.env.QUERY_PARAMS}`
     );
     dispatch({
       type: GET_MOVIES_ESTRENOSIMPRESCINDIBLES_SUCCESS,
@@ -69,7 +69,7 @@ export const getTodaLaFamiliaList = () => async (dispatch) => {
   });
   try {
     const response = await axios.get(
-      `${process.env.PROXY_URL}${process.env.BASE_URL}/lists/estrenos-para-toda-la-familia${process.env.QUERY_PARAMS}`
+      `${process.env.BASE_URL}/lists/estrenos-para-toda-la-familia${process.env.QUERY_PARAMS}`
     );
     dispatch({
       type: GET_MOVIES_TODALAFAMILIA_SUCCESS,
@@ -91,7 +91,7 @@ export const getEstrenosSpaniolesList = () => async (dispatch) => {
   });
   try {
     const response = await axios.get(
-      `${process.env.PROXY_URL}${process.env.BASE_URL}/lists/estrenos-espanoles${process.env.QUERY_PARAMS}`
+      `${process.env.BASE_URL}/lists/estrenos-espanoles${process.env.QUERY_PARAMS}`
     );
     dispatch({
       type: GET_MOVIES_ESTRENOSESPANIOLES_SUCCESS,
@@ -113,7 +113,7 @@ export const getNuestraPreferidasList = () => async (dispatch) => {
   });
   try {
     const response = await axios.get(
-      `${process.env.PROXY_URL}${process.env.BASE_URL}/lists/nuestras-preferidas-de-la-semana${process.env.QUERY_PARAMS}`
+      `${process.env.BASE_URL}/lists/nuestras-preferidas-de-la-semana${process.env.QUERY_PARAMS}`
     );
     dispatch({
       type: GET_MOVIES_NUESTRASPREFERIDAS_SUCCESS,
