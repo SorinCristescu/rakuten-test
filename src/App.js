@@ -17,14 +17,16 @@ import Layout from './layout';
 const App = () => (
   <div className="container">
     <GlobalStyle />
-    <ErrorBoundary>
-      <Suspense fallback={<Loader />}>
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/movie" exact component={Movie} />
-        </Switch>
-      </Suspense>
-    </ErrorBoundary>
+    <Layout>
+      <ErrorBoundary>
+        <Suspense fallback={<Loader />}>
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/movie" exact component={Movie} />
+          </Switch>
+        </Suspense>
+      </ErrorBoundary>
+    </Layout>
   </div>
 );
 

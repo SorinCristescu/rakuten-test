@@ -1,7 +1,13 @@
 import React from 'react';
 
+// Styles
+import { PageContainer } from './style';
 function Movie() {
-  return <div>Movie page</div>;
+  return (
+    <PageContainer>
+      <h1>Movie page</h1>
+    </PageContainer>
+  );
 }
 
 export default Movie;

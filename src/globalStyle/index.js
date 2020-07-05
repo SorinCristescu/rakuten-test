@@ -13,7 +13,7 @@ const GlobalStyle = createGlobalStyle`
         box-sizing: border-box;
         overflow-x: hidden;
         background-color: black;
-    color: white;
+        color: white;
     }
     h1, h2, h3, h4, h5, h6 {
         font-family: 'MonumentExtended-Ultrabold';
