@@ -43,18 +43,10 @@ const Trailer = (props) => {
 
   const playTrailer = () => {
     if (trailer) {
-      return (    
-        <Player
-          fluid
-          playsInline
-          autoPlay
-          // src={trailer.data.stream_infos[0].url}
-        >
+      return (
+        <Player fluid playsInline autoPlay className="player">
           <source src={trailer.data.stream_infos[0].url} />
-          <LoadingSpinner />
           <BigPlayButton position="center" />
-          <ControlBar autoHide={true} className="my-class" />
-          <VolumeMenuButton />
         </Player>
       );
     }

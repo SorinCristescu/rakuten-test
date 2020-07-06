@@ -26,7 +26,7 @@ export const ContainerInner = styled.div`
 
   .by-line {
     width: 60%;
-    font-size: 85%;
+    font-size: 70%;
     border-bottom: 1px solid grey;
   }
 
@@ -88,7 +88,7 @@ export const ImageWrapper = styled.div`
 
 export const ImageContainer = styled.div`
   width: 80%;
-  height: 80%;
+  height: 100%;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -96,7 +96,32 @@ export const ImageContainer = styled.div`
 
   img {
     width: 100%;
-    height: auto;
+    height: 100%;
+  }
+  position: relative;
+
+  .overlay {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  svg {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 20px;
+  }
+
+  &:hover .overlay {
+    opacity: 0.5;
+    background-color: yellow;
   }
 `;
 

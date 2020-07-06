@@ -10,6 +10,7 @@ import {
 const initialState = {
   errorCode: null,
   loading: false,
+  loaded: false,
   movie: null,
   trailer: null,
 };
@@ -21,11 +22,14 @@ const movieReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: true,
+        loaded: false,
+        movie: null,
       };
     case GET_MOVIE_BY_ID_SUCCESS:
       return {
         ...state,
         loading: false,
+        loaded: true,
         movie: payload,
       };
     case GET_MOVIE_BY_ID_FAIL:
@@ -33,22 +37,27 @@ const movieReducer = (state = initialState, action) => {
         ...state,
         errorCode: payload,
         loading: false,
+        loaded: false,
       };
     case GET_TRAILER_BY_ID_START:
       return {
         ...state,
         loading: true,
+        loaded: false,
+        trailer: null,
       };
     case GET_TRAILER_BY_ID_SUCCESS:
       return {
         ...state,
         loading: false,
+        loaded: true,
         trailer: payload,
       };
     case GET_TRAILER_BY_ID_FAIL:
       return {
         ...state,
         errorCode: payload,
+        loaded: false,
         loading: false,
       };
     default:

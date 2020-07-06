@@ -23,12 +23,29 @@ export const Navbar = styled.nav`
   }
 
   img {
-    height: 80px;
+    height: 50px;
     width: auto;
   }
 
   h1 {
     font-size: 200%;
     color: white;
+  }
+
+  .svg-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  svg {
+    width: 30px;
+    width: 30px;
+    margin-right: 20px;
+  }
+
+  svg:hover {
+    transform: scale(1.2);
   }
 `;

@@ -29,9 +29,7 @@ const SamplePrevArrow = (props) => {
 const Carousel = (props) => {
   const title = props.list.data.name;
   const movies = props.list.data.contents.data;
-  console.log('========================');
-  console.log(title);
-  console.log(movies);
+
   const settings = {
     speed: 3000,
     slidesToShow: 6,
