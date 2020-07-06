@@ -2,7 +2,7 @@ import React from 'react';
 
 import { LoaderContainer } from './style';
 
-function Loader() {
+const Loader = () => {
   return (
     <LoaderContainer>
       <svg
@@ -78,6 +78,6 @@ function Loader() {
       </svg>
     </LoaderContainer>
   );
-}
+};
 
 export default Loader;

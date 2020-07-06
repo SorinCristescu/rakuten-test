@@ -1,9 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
+// Components
 import Slider from 'react-slick';
 import MovieCard from '../MovieCard';
 import { CarouselContainer, CarouselBody, CarouselTitle } from './style';
 
+// Carousel arrow buttons
 const SampleNextArrow = (props) => {
   const { className, style, onClick } = props;
   return (
@@ -88,6 +91,11 @@ const Carousel = (props) => {
       </CarouselBody>
     </CarouselContainer>
   );
+};
+
+// Runtime props type checking
+Carousel.propTypes = {
+  list: PropTypes.array.isRequired,
 };
 
 export default Carousel;

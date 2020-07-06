@@ -8,21 +8,11 @@ import { withRouter } from 'react-router-dom';
 // Components
 import Loader from '../../components/Loader';
 
-// Styles
-// import '../../../node_modules/video-react/dist/video-react.css';
-
-import {
-  Player,
-  BigPlayButton,
-  LoadingSpinner,
-  ControlBar,
-  VolumeMenuButton,
-} from 'video-react';
+import { Player, BigPlayButton } from 'video-react';
 import { TrailerPageContainer } from './style';
 
 const Trailer = (props) => {
   const trailer = useSelector((state) => state.movie.trailer);
-  const loadingTrailer = useSelector((state) => state.movie.loading);
   const trailerId = props.match.params.id;
   const dispatch = useDispatch();
 

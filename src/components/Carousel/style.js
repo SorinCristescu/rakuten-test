@@ -7,7 +7,7 @@ export const CarouselContainer = styled.div`
 
 export const CarouselTitle = styled.h2`
   text-align: center;
-  color: #ffe403;
+  color: white;
   ${mobile} {
     font-size: 1rem;
   }

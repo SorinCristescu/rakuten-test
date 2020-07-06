@@ -67,11 +67,14 @@ export const CardFooter = styled.div`
   }
 `;
 
-export const Votes = styled.p`
-  color: #fdeb48 !important;
+export const Votes = styled.span`
+  color: #fdeb48;
+  font-size: 70%;
 `;
 
-export const Score = styled.p``;
+export const Score = styled.span`
+  font-size: 70%;
+`;
 
 export const MovieTitle = styled.h2`
   color: #ffffff;
