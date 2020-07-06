@@ -26,9 +26,6 @@ export const ContainerInner = styled.div`
 
   .by-line {
     width: 60%;
-    padding-bottom: 1px;
-    padding-left: 3px;
-    margin-left: 15px;
     font-size: 85%;
     border-bottom: 1px solid grey;
   }
@@ -105,12 +102,12 @@ export const ImageContainer = styled.div`
 
 export const Description = styled.div`
   width: 60%;
-  margin-top: -30px;
-  margin-left: 90px;
+  /* margin-top: -30px;
+  margin-left: 90px; */
 `;
 
 export const MoreInfo = styled.div`
-  width: 50%;
+  width: 100%;
   height: auto;
   margin-left: auto;
   margin-right: auto;

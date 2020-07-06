@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getMovieById } from '../../redux/movie/actions';
 
 // Routing
-import { withRouter } from 'react-router-dom';
+import { withRouter, NavLink } from 'react-router-dom';
 
 // Styles
 
@@ -20,7 +20,6 @@ const Movie = (props) => {
   const line = useRef();
   const movieTitle = useRef();
   const movieDescription = useRef();
-  const addToCartButton = useRef();
   const moreInfo = useRef();
   const imageEl = useRef();
   const imageWrapper = useRef();
@@ -35,7 +34,7 @@ const Movie = (props) => {
       await dispatch(getMovieById(movieId));
     }
     fetchMovies();
-    console.log(movie);
+
     if (!loadingMovie && movie) {
       gsap.from([line.current], 1, {
         delay: 1.5,
@@ -58,13 +57,6 @@ const Movie = (props) => {
         ease: 'back.easeOut',
       });
 
-      gsap.from([addToCartButton.current], 1, {
-        delay: 1.5,
-        opacity: 0,
-        x: 100,
-        ease: 'back.easeOut',
-      });
-
       gsap.from([moreInfo.current], 1, {
         delay: 2,
         opacity: 0,
@@ -83,15 +75,7 @@ const Movie = (props) => {
         ease: 'back.easeOut',
       });
     }
-  }, [
-    imageEl,
-    imageWrapper,
-    moreInfo,
-    addToCartButton,
-    movieDescription,
-    movieTitle,
-    line,
-  ]);
+  }, [imageEl, imageWrapper, moreInfo, movieDescription, movieTitle, line]);
   const {
     actors,
     directors,
@@ -100,6 +84,7 @@ const Movie = (props) => {
     images,
     plot,
     numerical_id,
+    id,
     title,
     year,
   } = movie.data;
@@ -112,19 +97,11 @@ const Movie = (props) => {
               Release Date: {year}
             </p>
             <div ref={movieTitle} className="heading">
-              <h1 className="heading1">{title}</h1>
+              {/* <h1 className="heading1">{title}</h1> */}
             </div>
             <Description>
               <p ref={movieDescription}>{movie && plot}</p>
             </Description>
-            <div ref={addToCartButton}>
-              {/* <Button
-                id="add_movie_details"
-                onClick={() => addToCart(movie)}
-                name="ADD TO CART"
-                width="200px"
-              /> */}
-            </div>
           </div>
           <MoreInfo ref={moreInfo}>
             <div className="actors-wrapper">
@@ -177,14 +154,16 @@ const Movie = (props) => {
           </MoreInfo>
         </div>
         <ImageWrapper ref={imageWrapper}>
-          <ImageContainer>
-            <img
-              ref={imageEl}
-              className="image"
-              src={images.artwork}
-              alt="image"
-            />
-          </ImageContainer>
+          <NavLink to={`/trailer/${id}`}>
+            <ImageContainer>
+              <img
+                ref={imageEl}
+                className="image"
+                src={images.artwork}
+                alt="image"
+              />
+            </ImageContainer>
+          </NavLink>
         </ImageWrapper>
       </ContainerInner>
     </>

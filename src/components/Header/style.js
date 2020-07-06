@@ -17,7 +17,7 @@ export const Navbar = styled.nav`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   a {
     text-decoration: none;
   }
@@ -25,5 +25,10 @@ export const Navbar = styled.nav`
   img {
     height: 80px;
     width: auto;
+  }
+
+  h1 {
+    font-size: 200%;
+    color: white;
   }
 `;

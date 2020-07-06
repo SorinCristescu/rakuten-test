@@ -32,14 +32,14 @@ export const getMovieById = (id) => async (dispatch) => {
 };
 
 // Get trailer by ID.
-export const getTrailerById = (id) => async (dispatch) => {
+export const getTrailerById = (configTrailer) => async (dispatch) => {
   dispatch({
     type: GET_TRAILER_BY_ID_START,
   });
   try {
     const response = await axios.post(
       `${process.env.BASE_URL}/me/streamings${process.env.QUERY_PARAMS}`,
-      JSON.stringify({ ...process.env.CONFIG_PLAYER, content_id: id })
+      configTrailer
     );
     dispatch({
       type: GET_TRAILER_BY_ID_SUCCESS,
