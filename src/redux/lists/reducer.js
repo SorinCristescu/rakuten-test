@@ -11,9 +11,9 @@ import {
   GET_MOVIES_ESTRENOSESPANIOLES_START,
   GET_MOVIES_ESTRENOSESPANIOLES_SUCCESS,
   GET_MOVIES_ESTRENOSESPANIOLES_FAIL,
-  GET_MOVIES_NUESTRASPREFERIDAS_START,
-  GET_MOVIES_NUESTRASPREFERIDAS_SUCCESS,
-  GET_MOVIES_NUESTRASPREFERIDAS_FAIL,
+  GET_MOVIES_SI_TE_PERDISTE_START,
+  GET_MOVIES_SI_TE_PERDISTE_SUCCESS,
+  GET_MOVIES_SI_TE_PERDISTE_FAIL,
 } from './types';
 
 const initialState = {
@@ -22,8 +22,8 @@ const initialState = {
   popularesMovies: [],
   todaLaFamiliaMovies: [],
   estrenosSpaniolesMovies: [],
-  nuestraPreferidasMovies: [],
   estrenosImprescindiblesMovies: [],
+  siTuPerdisteMovies: [],
 };
 
 const listsReducer = (state = initialState, action) => {
@@ -101,18 +101,18 @@ const listsReducer = (state = initialState, action) => {
         loading: false,
       };
 
-    case GET_MOVIES_NUESTRASPREFERIDAS_START:
+    case GET_MOVIES_SI_TE_PERDISTE_START:
       return {
         ...state,
         loading: true,
       };
-    case GET_MOVIES_NUESTRASPREFERIDAS_SUCCESS:
+    case GET_MOVIES_SI_TE_PERDISTE_SUCCESS:
       return {
         ...state,
         loading: false,
-        nuestraPreferidasMovies: payload,
+        siTuPerdisteMovies: payload,
       };
-    case GET_MOVIES_NUESTRASPREFERIDAS_FAIL:
+    case GET_MOVIES_SI_TE_PERDISTE_FAIL:
       return {
         ...state,
         errorCode: payload,

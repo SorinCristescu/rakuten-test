@@ -6,7 +6,7 @@ import {
   getEstrenosImprescindibleList,
   getTodaLaFamiliaList,
   getEstrenosSpaniolesList,
-  getNuestraPreferidasList,
+  getSiTePerdisteList,
 } from '../../redux/lists/actions';
 
 // Styles
@@ -29,6 +29,12 @@ const Home = () => {
   const estrenosImprescindiblesMovies = useSelector(
     (state) => state.lists.estrenosImprescindiblesMovies
   );
+  const siTuPerdisteMovies = useSelector(
+    (state) => state.lists.siTuPerdisteMovies
+  );
+  const especialXMenMovies = useSelector(
+    (state) => state.lists.especialXMenMovies
+  );
   const loadingList = useSelector((state) => state.lists.loading);
 
   const dispatch = useDispatch();
@@ -38,18 +44,19 @@ const Home = () => {
       await dispatch(getEstrenosImprescindibleList());
       await dispatch(getTodaLaFamiliaList());
       await dispatch(getEstrenosSpaniolesList());
-      await dispatch(getNuestraPreferidasList());
+      await dispatch(getSiTePerdisteList());
     }
     fetchMovies();
   }, []);
   if (!loadingList) {
+    console.log('home', siTuPerdisteMovies);
     return (
       <PageContainer>
         <Carousel list={popularesMovies} />
         <Carousel list={todaLaFamiliaMovies} />
         <Carousel list={estrenosSpaniolesMovies} />
-        <Carousel list={nuestraPreferidasMovies} />
         <Carousel list={estrenosImprescindiblesMovies} />
+        <Carousel list={siTuPerdisteMovies} />
       </PageContainer>
     );
   } else {

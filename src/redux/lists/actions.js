@@ -13,9 +13,9 @@ import {
   GET_MOVIES_ESTRENOSESPANIOLES_START,
   GET_MOVIES_ESTRENOSESPANIOLES_SUCCESS,
   GET_MOVIES_ESTRENOSESPANIOLES_FAIL,
-  GET_MOVIES_NUESTRASPREFERIDAS_START,
-  GET_MOVIES_NUESTRASPREFERIDAS_SUCCESS,
-  GET_MOVIES_NUESTRASPREFERIDAS_FAIL,
+  GET_MOVIES_SI_TE_PERDISTE_START,
+  GET_MOVIES_SI_TE_PERDISTE_SUCCESS,
+  GET_MOVIES_SI_TE_PERDISTE_FAIL,
 } from './types';
 
 // Fetch populares movies list.
@@ -107,21 +107,21 @@ export const getEstrenosSpaniolesList = () => async (dispatch) => {
 };
 
 // Fetch nuestra preferidas movies list.
-export const getNuestraPreferidasList = () => async (dispatch) => {
+export const getSiTePerdisteList = () => async (dispatch) => {
   dispatch({
-    type: GET_MOVIES_NUESTRASPREFERIDAS_START,
+    type: GET_MOVIES_SI_TE_PERDISTE_START,
   });
   try {
     const response = await axios.get(
-      `${process.env.BASE_URL}/lists/nuestras-preferidas-de-la-semana${process.env.QUERY_PARAMS}`
+      `${process.env.BASE_URL}/lists/si-te-perdiste${process.env.QUERY_PARAMS}`
     );
     dispatch({
-      type: GET_MOVIES_NUESTRASPREFERIDAS_SUCCESS,
+      type: GET_MOVIES_SI_TE_PERDISTE_SUCCESS,
       payload: response.data,
     });
   } catch (error) {
     dispatch({
-      type: GET_MOVIES_NUESTRASPREFERIDAS_FAIL,
+      type: GET_MOVIES_SI_TE_PERDISTE_FAIL,
       payload: error.response.data.errorCode,
     });
     console.log(error);
