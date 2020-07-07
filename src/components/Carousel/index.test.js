@@ -1,30 +1,35 @@
 import React from 'react';
-import { Provider } from 'react-redux';
-import renderer from 'react-test-renderer';
-import configureStore from 'redux-mock-store';
+
 import { shallow } from 'enzyme';
+
 import Carousel from './index';
 
-const mockStore = configureStore([]);
-
 describe('My Carousel Component', () => {
-  let store;
-  let component;
-
-  beforeEach(() => {
-    store = mockStore({
-      myState: 'sample text',
-    });
-
-    component = renderer.create(
-      <Provider store={store}>
-        <Carousel />
-      </Provider>
-    );
-  });
-
-  it('should render with given state from Redux store', () => {
-    expect(component.toJSON()).toMatchSnapshot();
+  it('renders without crashing given the required props', () => {
+    const props = {
+      list: {
+        data: {
+          contents: {
+            data: [
+              {
+                duration: 119,
+                id: 'adu',
+                images: {
+                  artwork:
+                    'https://images-3.wuaki.tv/system/artworks/126374/master/adu-1590104150.jpeg',
+                },
+                title: 'Adú',
+                year: 2020,
+              },
+            ],
+            id: 'populares-en-taquilla',
+            name: 'CINEMA - Películas más vistas en Alquiler',
+          },
+        },
+      },
+    };
+    const wrapper = shallow(<Carousel {...props} />);
+    expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('should be defined', () => {

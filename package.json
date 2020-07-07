@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "description": "Clone Rakuten TV app",
   "main": "index.js",
+  "jest": {
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
+  },
   "scripts": {
     "start": "webpack-dev-server --hot --open",
     "build": "webpack --config webpack.config.js --mode production",
@@ -45,11 +50,13 @@
     "dotenv-webpack": "^1.8.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
+    "enzyme-to-json": "^3.5.0",
     "file-loader": "^6.0.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.1.0",
     "react-test-renderer": "^16.13.1",
     "redux-mock-store": "^1.5.4",
+    "redux-promise-middleware": "^6.1.2",
     "style-loader": "^1.2.1"
   }
 }

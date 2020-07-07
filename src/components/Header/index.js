@@ -25,6 +25,7 @@ const Header = (props) => {
         props.location.pathname === `/movie/${movie.data.id}` ||
         props.location.pathname === `/trailer/${movie.data.id}`
       ) {
+        console.log('header', props);
         return (
           <div className="svg-container">
             <NavLink to="/">
@@ -52,6 +53,8 @@ const Header = (props) => {
 };
 
 // Runtime props type checking
-Header.propTypes = {};
+Header.propTypes = {
+  location: PropTypes.object.isRequired,
+};
 
 export default withRouter(Header);

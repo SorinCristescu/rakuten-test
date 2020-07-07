@@ -32,7 +32,7 @@ const SamplePrevArrow = (props) => {
 const Carousel = (props) => {
   const title = props.list.data.name;
   const movies = props.list.data.contents.data;
-
+  console.log('carousel', props);
   const settings = {
     speed: 3000,
     slidesToShow: 6,
@@ -95,7 +95,7 @@ const Carousel = (props) => {
 
 // Runtime props type checking
 Carousel.propTypes = {
-  list: PropTypes.array.isRequired,
+  list: PropTypes.object.isRequired,
 };
 
 export default Carousel;
