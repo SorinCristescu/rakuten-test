@@ -6,31 +6,37 @@ import {
   GET_TRAILER_BY_ID_SUCCESS,
 } from './types';
 
-describe('movieReducer Reducer', () => {
-  const initialState = {
-    loading: true,
+describe('Movie & Trailer Reducer', () => {
+  const initialMockState = {
+    errorCode: null,
+    loading: false,
     loaded: false,
     movie: null,
+    trailer: null,
   };
 
   it('returns the initial state when an action type is not passed', () => {
     const reducer = movieReducer(undefined, {});
 
-    expect(reducer).toEqual(initialState);
+    expect(reducer).toEqual(initialMockState);
   });
 
   it('handles GET_MOVIE_BY_ID_START as expected', () => {
-    const reducer = movieReducer(initialState, { type: GET_MOVIE_BY_ID_START });
+    const reducer = movieReducer(initialMockState, {
+      type: GET_MOVIE_BY_ID_START,
+    });
 
     expect(reducer).toEqual({
+      movie: null,
+      trailer: null,
+      errorCode: null,
       loading: true,
       loaded: false,
-      movie: null,
     });
   });
 
   it('handles GET_MOVIE_BY_ID_SUCCESS as expected', () => {
-    const reducer = movieReducer(initialState, {
+    const reducer = movieReducer(initialMockState, {
       type: GET_MOVIE_BY_ID_SUCCESS,
       payload: {
         data: [
@@ -43,31 +49,37 @@ describe('movieReducer Reducer', () => {
     });
 
     expect(reducer).toEqual({
-      users: [
-        {
-          id: 1,
-          name: 'foo',
-        },
-      ],
+      movie: {
+        data: [
+          {
+            id: 1,
+            name: 'foo',
+          },
+        ],
+      },
+      trailer: null,
+      errorCode: null,
       loading: false,
-      error: false,
+      loaded: true,
     });
   });
 
   it('handles GET_TRAILER_BY_ID_START as expected', () => {
-    const reducer = movieReducer(initialState, {
+    const reducer = movieReducer(initialMockState, {
       type: GET_TRAILER_BY_ID_START,
     });
 
     expect(reducer).toEqual({
+      movie: null,
+      trailer: null,
+      errorCode: null,
       loading: true,
       loaded: false,
-      movie: null,
     });
   });
 
   it('handles GET_TRAILER_BY_ID_SUCCESS as expected', () => {
-    const reducer = movieReducer(initialState, {
+    const reducer = movieReducer(initialMockState, {
       type: GET_TRAILER_BY_ID_SUCCESS,
       payload: {
         data: [
@@ -80,14 +92,18 @@ describe('movieReducer Reducer', () => {
     });
 
     expect(reducer).toEqual({
-      users: [
-        {
-          id: 1,
-          name: 'foo',
-        },
-      ],
+      trailer: {
+        data: [
+          {
+            id: 1,
+            name: 'foo',
+          },
+        ],
+      },
+      movie: null,
+      errorCode: null,
       loading: false,
-      error: false,
+      loaded: true,
     });
   });
 });

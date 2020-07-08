@@ -1,7 +1,7 @@
-import mockAxios from 'axios';
-import configureMockStore from 'redux-mock-store';
-import thunk from 'redux-thunk';
-import promiseMiddleware from 'redux-promise-middleware';
+import mockAxios from '../__moks__/axios.js';
+import { configureStore } from 'redux-mock-store';
+import { promise } from 'redux-promise-middleware';
+import { thunk } from 'redux-thunk';
 import { getMovieById, getTrailerById } from './actions';
 import {
   GET_MOVIE_BY_ID_START,
@@ -10,9 +10,10 @@ import {
   GET_TRAILER_BY_ID_SUCCESS,
 } from './types';
 
-const mockStore = configureMockStore([thunk, promiseMiddleware()]);
+const middlewares = [thunk, promise];
+const mockStore = configureStore(middlewares);
 
-describe('Movie Actions', () => {
+describe('Movie & Trailer Redux Actions', () => {
   let store;
 
   beforeEach(() => {
@@ -25,19 +26,19 @@ describe('Movie Actions', () => {
     it('dispatches GET_MOVIE_BY_ID_SUCCESS action and returns data on success', async () => {
       mockAxios.get.mockImplementationOnce(() =>
         Promise.resolve({
-          data: [{ id: 1, name: 'Vasilis' }],
+          data: [{ id: 1, title: 'Adú' }],
         })
       );
       await store.dispatch(getMovieById());
       const actions = store.getActions();
-      [
-        { type: GET_MOVIE_BY_ID_START },
-        { type: GET_MOVIE_BY_ID_SUCCESS, payload: { data: [Array] } },
-      ];
+      // [
+      //   { type: GET_MOVIE_BY_ID_START },
+      //   { type: GET_MOVIE_BY_ID_SUCCESS, payload: { data: [Array] } },
+      // ];
       expect.assertions(3);
       expect(actions[0].type).toEqual(GET_MOVIE_BY_ID_START);
       expect(actions[1].type).toEqual(GET_MOVIE_BY_ID_SUCCESS);
-      expect(actions[1].payload.data[0].name).toEqual('Vasilis');
+      expect(actions[1].payload.data[0].name).toEqual('Adú');
     });
   });
 });
@@ -46,18 +47,18 @@ describe('getTrailerById action creator', () => {
   it('dispatches GET_MOVIE_BY_ID_SUCCESS action and returns data on success', async () => {
     mockAxios.get.mockImplementationOnce(() =>
       Promise.resolve({
-        data: [{ id: 1, name: 'Vasilis' }],
+        data: [{ id: 1, title: 'Adú' }],
       })
     );
     await store.dispatch(getTrailerById());
     const actions = store.getActions();
-    [
-      { type: GET_TRAILER_BY_ID_START },
-      { type: GET_TRAILER_BY_ID_SUCCESS, payload: { data: [Array] } },
-    ];
+    // [
+    //   { type: GET_TRAILER_BY_ID_START },
+    //   { type: GET_TRAILER_BY_ID_SUCCESS, payload: { data: [Array] } },
+    // ];
     expect.assertions(3);
     expect(actions[0].type).toEqual(GET_TRAILER_BY_ID_START);
     expect(actions[1].type).toEqual(GET_TRAILER_BY_ID_SUCCESS);
-    expect(actions[1].payload.data[0].name).toEqual('Vasilis');
+    expect(actions[1].payload.data[0].name).toEqual('Adú');
   });
 });

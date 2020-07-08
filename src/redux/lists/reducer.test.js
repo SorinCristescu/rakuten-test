@@ -8,255 +8,387 @@ import {
   GET_MOVIES_TODALAFAMILIA_SUCCESS,
   GET_MOVIES_ESTRENOSESPANIOLES_START,
   GET_MOVIES_ESTRENOSESPANIOLES_SUCCESS,
-  GET_MOVIES_NUESTRASPREFERIDAS_START,
-  GET_MOVIES_NUESTRASPREFERIDAS_SUCCESS,
+  GET_MOVIES_SI_TU_PERDISTE_START,
 } from './types';
 
 describe('listsReducer Reducer', () => {
-  const initialState = {
-    loading: true,
-    loaded: false,
-    movie: null,
+  const initialMockState = {
+    errorCode: null,
+    loading: false,
+    popularesMovies: [],
+    todaLaFamiliaMovies: [],
+    estrenosSpaniolesMovies: [],
+    estrenosImprescindiblesMovies: [],
+    siTuPerdisteMovies: [],
   };
 
   it('returns the initial state when an action type is not passed', () => {
     const reducer = listsReducer(undefined, {});
 
-    expect(reducer).toEqual(initialState);
+    expect(reducer).toEqual(initialMockState);
   });
 
   it('handles GET_MOVIES_POPULARES_START as expected', () => {
-    const reducer = listsReducer(initialState, {
+    const reducer = listsReducer(initialMockState, {
       type: GET_MOVIES_POPULARES_START,
     });
 
     expect(reducer).toEqual({
-      loading: true,
-      loaded: false,
-      movie: null,
       errorCode: null,
+      loading: true,
       estrenosImprescindiblesMovies: [],
       estrenosSpaniolesMovies: [],
-      nuestraPreferidasMovies: [],
+      siTuPerdisteMovies: [],
       popularesMovies: [],
       todaLaFamiliaMovies: [],
     });
   });
 
   it('handles GET_MOVIES_POPULARES_SUCCESS as expected', () => {
-    const reducer = listsReducer(initialState, {
+    const reducer = listsReducer(initialMockState, {
       type: GET_MOVIES_POPULARES_SUCCESS,
-      payload: {
-        data: [
-          {
-            id: 'populares-en-taquilla',
-            name: 'CINEMA - Películas más vistas en Alquiler',
-            contents: {
-              data: [
-                {
-                  duration: 119,
-                  highlighted_score: {
-                    formatted_amount_of_votes: '212',
-                    score: 6.6,
+      payload: [
+        {
+          data: [
+            {
+              id: 'populares-en-taquilla',
+              name: 'CINEMA - Películas más vistas en Alquiler',
+              contents: {
+                data: [
+                  {
+                    duration: 119,
+                    highlighted_score: {
+                      formatted_amount_of_votes: '212',
+                      score: 6.6,
+                    },
+                    id: 'adu',
+                    images: {
+                      artwork:
+                        'https://images-3.wuaki.tv/system/artworks/126374/master/adu-1590104150.jpeg',
+                    },
+                    title: 'Adú',
+                    year: 2020,
                   },
-                  id: 'adu',
-                  images: {
-                    artwork:
-                      'https://images-3.wuaki.tv/system/artworks/126374/master/adu-1590104150.jpeg',
-                  },
-                  title: 'Adú',
-                  year: 2020,
-                },
-              ],
+                ],
+              },
             },
-          },
-        ],
-      },
+          ],
+        },
+      ],
     });
 
     expect(reducer).toEqual({
-      popularesMovies: {
-        data: [
-          {
-            id: 'populares-en-taquilla',
-            name: 'CINEMA - Películas más vistas en Alquiler',
-            contents: {
-              data: [
-                {
-                  duration: 119,
-                  highlighted_score: {
-                    formatted_amount_of_votes: '212',
-                    score: 6.6,
+      popularesMovies: [
+        {
+          data: [
+            {
+              id: 'populares-en-taquilla',
+              name: 'CINEMA - Películas más vistas en Alquiler',
+              contents: {
+                data: [
+                  {
+                    duration: 119,
+                    highlighted_score: {
+                      formatted_amount_of_votes: '212',
+                      score: 6.6,
+                    },
+                    id: 'adu',
+                    images: {
+                      artwork:
+                        'https://images-3.wuaki.tv/system/artworks/126374/master/adu-1590104150.jpeg',
+                    },
+                    title: 'Adú',
+                    year: 2020,
                   },
-                  id: 'adu',
-                  images: {
-                    artwork:
-                      'https://images-3.wuaki.tv/system/artworks/126374/master/adu-1590104150.jpeg',
-                  },
-                  title: 'Adú',
-                  year: 2020,
-                },
-              ],
+                ],
+              },
             },
-          },
-        ],
-      },
-      loading: false,
-      loaded: true,
-      errorCode: null,
+          ],
+        },
+      ],
       estrenosImprescindiblesMovies: [],
       estrenosSpaniolesMovies: [],
-      nuestraPreferidasMovies: [],
+      siTuPerdisteMovies: [],
       todaLaFamiliaMovies: [],
-      movie: null,
+      errorCode: null,
+      loading: false,
     });
   });
 
   it('handles GET_MOVIES_ESTRENOSIMPRESCINDIBLES_START as expected', () => {
-    const reducer = listsReducer(initialState, {
+    const reducer = listsReducer(initialMockState, {
       type: GET_MOVIES_ESTRENOSIMPRESCINDIBLES_START,
     });
 
     expect(reducer).toEqual({
+      errorCode: null,
       loading: true,
-      loaded: false,
-      movie: null,
+      estrenosImprescindiblesMovies: [],
+      estrenosSpaniolesMovies: [],
+      siTuPerdisteMovies: [],
+      popularesMovies: [],
+      todaLaFamiliaMovies: [],
     });
   });
 
   it('handles GET_MOVIES_ESTRENOSIMPRESCINDIBLES_SUCCESS as expected', () => {
-    const reducer = listsReducer(initialState, {
+    const reducer = listsReducer(initialMockState, {
       type: GET_MOVIES_ESTRENOSIMPRESCINDIBLES_SUCCESS,
-      payload: {
-        data: [
-          {
-            id: 1,
-            name: 'foo',
-          },
-        ],
-      },
+      payload: [
+        {
+          data: [
+            {
+              id: 'populares-en-taquilla',
+              name: 'CINEMA - Películas más vistas en Alquiler',
+              contents: {
+                data: [
+                  {
+                    duration: 119,
+                    highlighted_score: {
+                      formatted_amount_of_votes: '212',
+                      score: 6.6,
+                    },
+                    id: 'adu',
+                    images: {
+                      artwork:
+                        'https://images-3.wuaki.tv/system/artworks/126374/master/adu-1590104150.jpeg',
+                    },
+                    title: 'Adú',
+                    year: 2020,
+                  },
+                ],
+              },
+            },
+          ],
+        },
+      ],
     });
 
     expect(reducer).toEqual({
-      users: [
+      estrenosImprescindiblesMovies: [
         {
-          id: 1,
-          name: 'foo',
+          data: [
+            {
+              id: 'populares-en-taquilla',
+              name: 'CINEMA - Películas más vistas en Alquiler',
+              contents: {
+                data: [
+                  {
+                    duration: 119,
+                    highlighted_score: {
+                      formatted_amount_of_votes: '212',
+                      score: 6.6,
+                    },
+                    id: 'adu',
+                    images: {
+                      artwork:
+                        'https://images-3.wuaki.tv/system/artworks/126374/master/adu-1590104150.jpeg',
+                    },
+                    title: 'Adú',
+                    year: 2020,
+                  },
+                ],
+              },
+            },
+          ],
         },
       ],
+      popularesMovies: [],
+      estrenosSpaniolesMovies: [],
+      todaLaFamiliaMovies: [],
+      siTuPerdisteMovies: [],
+      errorCode: null,
       loading: false,
-      error: false,
     });
   });
 
   it('handles GET_MOVIES_TODALAFAMILIA_START as expected', () => {
-    const reducer = listsReducer(initialState, {
+    const reducer = listsReducer(initialMockState, {
       type: GET_MOVIES_TODALAFAMILIA_START,
     });
 
     expect(reducer).toEqual({
+      errorCode: null,
       loading: true,
-      loaded: false,
-      movie: null,
+      estrenosImprescindiblesMovies: [],
+      estrenosSpaniolesMovies: [],
+      siTuPerdisteMovies: [],
+      popularesMovies: [],
+      todaLaFamiliaMovies: [],
     });
   });
 
   it('handles GET_MOVIES_TODALAFAMILIA_SUCCESS as expected', () => {
-    const reducer = listsReducer(initialState, {
+    const reducer = listsReducer(initialMockState, {
       type: GET_MOVIES_TODALAFAMILIA_SUCCESS,
-      payload: {
-        data: [
-          {
-            id: 1,
-            name: 'foo',
-          },
-        ],
-      },
+      payload: [
+        {
+          data: [
+            {
+              id: 'populares-en-taquilla',
+              name: 'CINEMA - Películas más vistas en Alquiler',
+              contents: {
+                data: [
+                  {
+                    duration: 119,
+                    highlighted_score: {
+                      formatted_amount_of_votes: '212',
+                      score: 6.6,
+                    },
+                    id: 'adu',
+                    images: {
+                      artwork:
+                        'https://images-3.wuaki.tv/system/artworks/126374/master/adu-1590104150.jpeg',
+                    },
+                    title: 'Adú',
+                    year: 2020,
+                  },
+                ],
+              },
+            },
+          ],
+        },
+      ],
     });
 
     expect(reducer).toEqual({
-      users: [
+      todaLaFamiliaMovies: [
         {
-          id: 1,
-          name: 'foo',
+          data: [
+            {
+              id: 'populares-en-taquilla',
+              name: 'CINEMA - Películas más vistas en Alquiler',
+              contents: {
+                data: [
+                  {
+                    duration: 119,
+                    highlighted_score: {
+                      formatted_amount_of_votes: '212',
+                      score: 6.6,
+                    },
+                    id: 'adu',
+                    images: {
+                      artwork:
+                        'https://images-3.wuaki.tv/system/artworks/126374/master/adu-1590104150.jpeg',
+                    },
+                    title: 'Adú',
+                    year: 2020,
+                  },
+                ],
+              },
+            },
+          ],
         },
       ],
+      estrenosImprescindiblesMovies: [],
+      estrenosSpaniolesMovies: [],
+      siTuPerdisteMovies: [],
+      popularesMovies: [],
+      errorCode: null,
       loading: false,
-      error: false,
     });
   });
 
   it('handles GET_MOVIES_ESTRENOSESPANIOLES_START as expected', () => {
-    const reducer = listsReducer(initialState, {
+    const reducer = listsReducer(initialMockState, {
       type: GET_MOVIES_ESTRENOSESPANIOLES_START,
     });
 
     expect(reducer).toEqual({
+      errorCode: null,
       loading: true,
-      loaded: false,
-      movie: null,
+      estrenosImprescindiblesMovies: [],
+      estrenosSpaniolesMovies: [],
+      siTuPerdisteMovies: [],
+      popularesMovies: [],
+      todaLaFamiliaMovies: [],
     });
   });
 
   it('handles GET_MOVIES_ESTRENOSESPANIOLES_SUCCESS as expected', () => {
-    const reducer = listsReducer(initialState, {
+    const reducer = listsReducer(initialMockState, {
       type: GET_MOVIES_ESTRENOSESPANIOLES_SUCCESS,
-      payload: {
-        data: [
-          {
-            id: 1,
-            name: 'foo',
-          },
-        ],
-      },
+      payload: [
+        {
+          data: [
+            {
+              id: 'populares-en-taquilla',
+              name: 'CINEMA - Películas más vistas en Alquiler',
+              contents: {
+                data: [
+                  {
+                    duration: 119,
+                    highlighted_score: {
+                      formatted_amount_of_votes: '212',
+                      score: 6.6,
+                    },
+                    id: 'adu',
+                    images: {
+                      artwork:
+                        'https://images-3.wuaki.tv/system/artworks/126374/master/adu-1590104150.jpeg',
+                    },
+                    title: 'Adú',
+                    year: 2020,
+                  },
+                ],
+              },
+            },
+          ],
+        },
+      ],
     });
 
     expect(reducer).toEqual({
-      users: [
+      estrenosSpaniolesMovies: [
         {
-          id: 1,
-          name: 'foo',
+          data: [
+            {
+              id: 'populares-en-taquilla',
+              name: 'CINEMA - Películas más vistas en Alquiler',
+              contents: {
+                data: [
+                  {
+                    duration: 119,
+                    highlighted_score: {
+                      formatted_amount_of_votes: '212',
+                      score: 6.6,
+                    },
+                    id: 'adu',
+                    images: {
+                      artwork:
+                        'https://images-3.wuaki.tv/system/artworks/126374/master/adu-1590104150.jpeg',
+                    },
+                    title: 'Adú',
+                    year: 2020,
+                  },
+                ],
+              },
+            },
+          ],
         },
       ],
+      estrenosImprescindiblesMovies: [],
+      popularesMovies: [],
+      siTuPerdisteMovies: [],
+      todaLaFamiliaMovies: [],
+      errorCode: null,
       loading: false,
-      error: false,
     });
   });
 
-  it('handles GET_MOVIES_NUESTRASPREFERIDAS_START as expected', () => {
-    const reducer = listsReducer(initialState, {
-      type: GET_MOVIES_NUESTRASPREFERIDAS_START,
+  it('handles GET_MOVIES_SI_TU_PERDISTE_START as expected', () => {
+    const reducer = listsReducer(initialMockState, {
+      type: GET_MOVIES_SI_TU_PERDISTE_START,
     });
 
     expect(reducer).toEqual({
-      loading: true,
-      loaded: false,
-      movie: null,
-    });
-  });
-
-  it('handles GET_MOVIES_NUESTRASPREFERIDAS_SUCCESS as expected', () => {
-    const reducer = listsReducer(initialState, {
-      type: GET_MOVIES_NUESTRASPREFERIDAS_SUCCESS,
-      payload: {
-        data: [
-          {
-            id: 1,
-            name: 'foo',
-          },
-        ],
-      },
-    });
-
-    expect(reducer).toEqual({
-      users: [
-        {
-          id: 1,
-          name: 'foo',
-        },
-      ],
+      estrenosImprescindiblesMovies: [],
+      estrenosSpaniolesMovies: [],
+      siTuPerdisteMovies: [],
+      popularesMovies: [],
+      todaLaFamiliaMovies: [],
+      errorCode: null,
       loading: false,
-      error: false,
     });
   });
 });
