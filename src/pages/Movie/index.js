@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { getMovieById } from '../../redux/movie/actions';

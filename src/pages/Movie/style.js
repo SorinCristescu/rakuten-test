@@ -149,11 +149,15 @@ export const ImageWrapper = styled.div`
   ${tablet} {
     flex-basis: 100%;
     order: 1;
-    ${mobile} {
-      flex-basis: 100%;
-      order: 1;
-    }
+  }
+  ${mobile} {
+    flex-basis: 100%;
+    order: 1;
+  }
 
+  a {
+    text-decoration: none;
+  }
 `;
 
 export const ImageContainer = styled.div`
