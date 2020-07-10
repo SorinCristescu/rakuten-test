@@ -221,8 +221,8 @@ describe('listsReducer Reducer', () => {
       loading: false,
       loadedPopularesMovies: false,
       loadedTodaLaFamiliaMovies: false,
-      loadedEstrenosSpaniolesMovies: true,
-      loadedEstrenosImprescindiblesMovies: false,
+      loadedEstrenosSpaniolesMovies: false,
+      loadedEstrenosImprescindiblesMovies: true,
       loadedSiTuPerdisteMovies: false,
     });
   });
