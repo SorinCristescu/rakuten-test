@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from 'react';
-import gsap from 'gsap';
+import React, { useEffect } from 'react';
+
 import { useSelector, useDispatch } from 'react-redux';
 import { getMovieById } from '../../redux/movie/actions';
 
@@ -21,11 +21,6 @@ import {
 } from './style';
 
 const Movie = (props) => {
-  const line = useRef();
-  const movieDescription = useRef();
-  const moreInfo = useRef();
-  const imageEl = useRef();
-  const imageWrapper = useRef();
   const movieId = props.match.params.id;
   const dispatch = useDispatch();
   const loaded = useSelector((state) => state.movie.loaded);
@@ -36,41 +31,7 @@ const Movie = (props) => {
       await dispatch(getMovieById(movieId));
     }
     fetchMovies();
-    if (loaded && movie) {
-      console.log(line.current);
-      gsap.from([line.current], 1, {
-        delay: 1.5,
-        opacity: 0,
-        x: 100,
-        ease: 'back.easeOut',
-      });
-
-      gsap.from([movieDescription.current], 0.5, {
-        delay: 1.3,
-        opacity: 0,
-        y: 50,
-        ease: 'back.easeOut',
-      });
-
-      gsap.from([moreInfo.current], 1, {
-        delay: 2,
-        opacity: 0,
-        y: 50,
-        ease: 'back.easeOut',
-      });
-      gsap.from([imageWrapper.current], 1, {
-        delay: 0,
-        opacity: 0,
-        x: '100%',
-        ease: 'back.easeOut',
-      });
-      gsap.from([imageEl.current], 1, {
-        delay: 0,
-        scale: 1.8,
-        ease: 'back.easeOut',
-      });
-    }
-  }, [imageEl, imageWrapper, moreInfo, movieDescription, line]);
+  }, []);
 
   if (!loaded) {
     return <Loader />;
@@ -90,14 +51,12 @@ const Movie = (props) => {
         <ContainerInner>
           <div className="main-content">
             <div className="main-headings">
-              <p ref={line} className="by-line">
-                Release Date: {year}
-              </p>
+              <p className="by-line">Release Date: {year}</p>
               <Description>
-                <p ref={movieDescription}>{movie && plot}</p>
+                <p>{movie && plot}</p>
               </Description>
             </div>
-            <MoreInfo ref={moreInfo}>
+            <MoreInfo>
               <div className="actors-wrapper">
                 <p>Genres: </p>
                 <div className="list-container">
@@ -157,15 +116,10 @@ const Movie = (props) => {
               </div>
             </MoreInfo>
           </div>
-          <ImageWrapper ref={imageWrapper}>
+          <ImageWrapper>
             <NavLink to={`/trailer/${id}`}>
               <ImageContainer>
-                <img
-                  ref={imageEl}
-                  className="image"
-                  src={images.artwork}
-                  alt="image"
-                />
+                <img className="image" src={images.artwork} alt="image" />
                 <div className="overlay">
                   <span style={{ fontSize: '150px', color: '#000000' }}>
                     <FontAwesomeIcon icon={faPlayCircle} />
