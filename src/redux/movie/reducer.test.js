@@ -7,7 +7,7 @@ import {
 } from './types';
 
 describe('Movie & Trailer Reducer', () => {
-  const initialMockState = {
+  const initialState = {
     errorCode: null,
     loading: false,
     loaded: false,
@@ -18,11 +18,11 @@ describe('Movie & Trailer Reducer', () => {
   it('returns the initial state when an action type is not passed', () => {
     const reducer = movieReducer(undefined, {});
 
-    expect(reducer).toEqual(initialMockState);
+    expect(reducer).toEqual(initialState);
   });
 
   it('handles GET_MOVIE_BY_ID_START as expected', () => {
-    const reducer = movieReducer(initialMockState, {
+    const reducer = movieReducer(initialState, {
       type: GET_MOVIE_BY_ID_START,
     });
 
@@ -36,7 +36,7 @@ describe('Movie & Trailer Reducer', () => {
   });
 
   it('handles GET_MOVIE_BY_ID_SUCCESS as expected', () => {
-    const reducer = movieReducer(initialMockState, {
+    const reducer = movieReducer(initialState, {
       type: GET_MOVIE_BY_ID_SUCCESS,
       payload: {
         data: [
@@ -65,7 +65,7 @@ describe('Movie & Trailer Reducer', () => {
   });
 
   it('handles GET_TRAILER_BY_ID_START as expected', () => {
-    const reducer = movieReducer(initialMockState, {
+    const reducer = movieReducer(initialState, {
       type: GET_TRAILER_BY_ID_START,
     });
 
@@ -79,7 +79,7 @@ describe('Movie & Trailer Reducer', () => {
   });
 
   it('handles GET_TRAILER_BY_ID_SUCCESS as expected', () => {
-    const reducer = movieReducer(initialMockState, {
+    const reducer = movieReducer(initialState, {
       type: GET_TRAILER_BY_ID_SUCCESS,
       payload: {
         data: [

@@ -25,7 +25,7 @@ export const getMovieById = (id) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: GET_MOVIE_BY_ID_FAIL,
-      payload: error.response.data.errorCode,
+      payload: error,
     });
     console.log(error);
   }

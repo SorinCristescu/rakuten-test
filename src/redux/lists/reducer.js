@@ -19,6 +19,11 @@ import {
 const initialState = {
   errorCode: null,
   loading: false,
+  loadedPopularesMovies: false,
+  loadedTodaLaFamiliaMovies: false,
+  loadedEstrenosSpaniolesMovies: false,
+  loadedEstrenosImprescindiblesMovies: false,
+  loadedSiTuPerdisteMovies: false,
   popularesMovies: [],
   todaLaFamiliaMovies: [],
   estrenosSpaniolesMovies: [],
@@ -33,11 +38,13 @@ const listsReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: true,
+        loadedPopularesMovies: false,
       };
     case GET_MOVIES_POPULARES_SUCCESS:
       return {
         ...state,
         loading: false,
+        loadedPopularesMovies: true,
         popularesMovies: payload,
       };
     case GET_MOVIES_POPULARES_FAIL:
@@ -45,17 +52,20 @@ const listsReducer = (state = initialState, action) => {
         ...state,
         errorCode: payload,
         loading: false,
+        loadedPopularesMovies: false,
       };
 
     case GET_MOVIES_ESTRENOSIMPRESCINDIBLES_START:
       return {
         ...state,
         loading: true,
+        loadedEstrenosImprescindiblesMovies: false,
       };
     case GET_MOVIES_ESTRENOSIMPRESCINDIBLES_SUCCESS:
       return {
         ...state,
         loading: false,
+        loadedEstrenosImprescindiblesMovies: true,
         estrenosImprescindiblesMovies: payload,
       };
     case GET_MOVIES_ESTRENOSIMPRESCINDIBLES_FAIL:
@@ -63,22 +73,26 @@ const listsReducer = (state = initialState, action) => {
         ...state,
         errorCode: payload,
         loading: false,
+        loadedEstrenosImprescindiblesMovies: false,
       };
 
     case GET_MOVIES_TODALAFAMILIA_START:
       return {
         ...state,
         loading: true,
+        loadedTodaLaFamiliaMovies: false,
       };
     case GET_MOVIES_TODALAFAMILIA_SUCCESS:
       return {
         ...state,
         loading: false,
+        loadedTodaLaFamiliaMovies: true,
         todaLaFamiliaMovies: payload,
       };
     case GET_MOVIES_TODALAFAMILIA_FAIL:
       return {
         ...state,
+        loadedTodaLaFamiliaMovies: false,
         errorCode: payload,
         loading: false,
       };
@@ -87,16 +101,19 @@ const listsReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: true,
+        loadedEstrenosSpaniolesMovies: false,
       };
     case GET_MOVIES_ESTRENOSESPANIOLES_SUCCESS:
       return {
         ...state,
         loading: false,
+        loadedEstrenosSpaniolesMovies: true,
         estrenosSpaniolesMovies: payload,
       };
     case GET_MOVIES_ESTRENOSESPANIOLES_FAIL:
       return {
         ...state,
+        loadedEstrenosSpaniolesMovies: false,
         errorCode: payload,
         loading: false,
       };
@@ -104,12 +121,14 @@ const listsReducer = (state = initialState, action) => {
     case GET_MOVIES_SI_TE_PERDISTE_START:
       return {
         ...state,
+        loadedSiTuPerdisteMovies: false,
         loading: true,
       };
     case GET_MOVIES_SI_TE_PERDISTE_SUCCESS:
       return {
         ...state,
         loading: false,
+        loadedSiTuPerdisteMovies: true,
         siTuPerdisteMovies: payload,
       };
     case GET_MOVIES_SI_TE_PERDISTE_FAIL:
@@ -117,6 +136,7 @@ const listsReducer = (state = initialState, action) => {
         ...state,
         errorCode: payload,
         loading: false,
+        loadedSiTuPerdisteMovies: false,
       };
     default:
       return state;

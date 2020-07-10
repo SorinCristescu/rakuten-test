@@ -18,7 +18,7 @@ const composeEnhancers = composeWithDevTools({
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['lists', 'movie'],
+  whitelist: ['movie', 'lists'],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

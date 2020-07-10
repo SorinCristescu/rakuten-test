@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import gsap from 'gsap';
 import { useSelector } from 'react-redux';
@@ -16,32 +16,28 @@ import { HeaderContainer, Navbar } from './style';
 
 const Header = (props) => {
   const header = useRef();
-  const movie = useSelector((state) => state.movie.movie);
+
   const loaded = useSelector((state) => state.movie.loaded);
+  const movie = useSelector((state) => state.movie.movie);
 
   const renderTitle = () => {
-    if (loaded) {
-      if (
-        props.location.pathname === `/movie/${movie.data.id}` ||
-        props.location.pathname === `/trailer/${movie.data.id}`
-      ) {
-        return (
-          <div className="svg-container">
-            <NavLink to="/">
-              <span style={{ fontSize: '20px', color: '#ffffff' }}>
-                <FontAwesomeIcon icon={faArrowLeft} />
-              </span>
-            </NavLink>
-            <h2>{movie.data.title}</h2>
-          </div>
-        );
-      } else {
-        return (
+    if (props.location.pathname === '/') {
+      return (
+        <NavLink to="/">
+          <img src={Logo} alt="logo" />
+        </NavLink>
+      );
+    } else {
+      return (
+        <div className="svg-container">
           <NavLink to="/">
-            <img src={Logo} alt="logo" />
+            <span style={{ fontSize: '20px', color: '#ffffff' }}>
+              <FontAwesomeIcon icon={faArrowLeft} />
+            </span>
           </NavLink>
-        );
-      }
+          <h2>{loaded && movie.data.title}</h2>
+        </div>
+      );
     }
   };
   return (

@@ -1,20 +1,72 @@
 import styled from 'styled-components';
+import {
+  mobile,
+  tablet,
+  laptopXL,
+  desktop,
+  laptop,
+} from '../../globalStyle/mediaQueries';
 
 export const ContainerInner = styled.div`
-  padding-top: 160px;
+  padding-top: 100px;
   width: 100%;
   height: 100%;
   display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
+
   position: relative;
+  ${desktop} {
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: nowrap;
+  }
+  ${laptopXL} {
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: nowrap;
+  }
+  ${laptop} {
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: nowrap;
+  }
+
+  ${tablet} {
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  ${mobile} {
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: column;
+  }
 
   .main-content {
-    flex-basis: 50%;
-    order: 1;
+    padding: 15px;
     align-self: center;
     display: flex;
     flex-direction: column;
+
+    ${desktop} {
+      flex-basis: 50%;
+      order: 1;
+    }
+    ${laptopXL} {
+      flex-basis: 50%;
+      order: 1;
+    }
+    ${laptop} {
+      flex-basis: 50%;
+      order: 1;
+    }
+    ${tablet} {
+      flex-basis: 100%;
+      order: 2;
+    }
+    ${mobile} {
+      flex-basis: 100%;
+      order: 2;
+    }
   }
 
   .main-headings {
@@ -49,8 +101,8 @@ export const ContainerInner = styled.div`
     width: 100%;
     height: auto;
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
     justify-content: flex-start;
     flex-wrap: wrap;
   }
@@ -82,12 +134,30 @@ export const ContainerInner = styled.div`
 `;
 
 export const ImageWrapper = styled.div`
-  flex-basis: 50%;
-  order: 2;
+  ${desktop} {
+    flex-basis: 50%;
+    order: 2;
+  }
+  ${laptopXL} {
+    flex-basis: 50%;
+    order: 2;
+  }
+  ${laptop} {
+    flex-basis: 50%;
+    order: 2;
+  }
+  ${tablet} {
+    flex-basis: 100%;
+    order: 1;
+    ${mobile} {
+      flex-basis: 100%;
+      order: 1;
+    }
+
 `;
 
 export const ImageContainer = styled.div`
-  width: 80%;
+  width: 100%;
   height: 100%;
   display: flex;
   flex-direction: row;

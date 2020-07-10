@@ -5,5 +5,8 @@
   "moduleNameMapper": {
     "^.+\\.(css|less|scss)$": "babel-jest",
     "^.+\\.(jpg|png|gif|svg)$": "identity-obj-proxy"
+  },
+  "transform": {
+    "^.+\\.[t|j]sx?$": "babel-jest"
   }
 }

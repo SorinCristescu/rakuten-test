@@ -13,6 +13,7 @@ import { TrailerPageContainer } from './style';
 
 const Trailer = (props) => {
   const trailer = useSelector((state) => state.movie.trailer);
+  const loaded = useSelector((state) => state.movie.loaded);
   const trailerId = props.match.params.id;
   const dispatch = useDispatch();
 
@@ -42,14 +43,14 @@ const Trailer = (props) => {
     }
   };
 
-  if (trailer) {
-    return <TrailerPageContainer>{playTrailer()}</TrailerPageContainer>;
-  } else {
+  if (!loaded) {
     return (
       <TrailerPageContainer>
         <Loader />
       </TrailerPageContainer>
     );
+  } else {
+    return <TrailerPageContainer>{playTrailer()}</TrailerPageContainer>;
   }
 };
 

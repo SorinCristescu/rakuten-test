@@ -11,7 +11,8 @@ module.exports = {
   plugins: [
     new Dotenv(),
     new HtmlWebpackPlugin({
-      template: './public/index.html',
+      template: path.resolve(__dirname, 'public/index.html'),
+      inject: true,
     }),
   ],
   resolve: {
@@ -24,6 +25,10 @@ module.exports = {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: require.resolve('babel-loader'),
+        options: {
+          cacheDirectory: true,
+          cacheCompression: false,
+        },
       },
       {
         test: /\.css$/,

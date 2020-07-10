@@ -14,7 +14,7 @@ import { PageContainer } from './style';
 
 // Components
 import Carousel from '../../components/Carousel';
-
+import Loader from '../../components/Loader';
 const Home = () => {
   const popularesMovies = useSelector((state) => state.lists.popularesMovies);
   const todaLaFamiliaMovies = useSelector(
@@ -23,19 +23,29 @@ const Home = () => {
   const estrenosSpaniolesMovies = useSelector(
     (state) => state.lists.estrenosSpaniolesMovies
   );
-  const nuestraPreferidasMovies = useSelector(
-    (state) => state.lists.nuestraPreferidasMovies
-  );
   const estrenosImprescindiblesMovies = useSelector(
     (state) => state.lists.estrenosImprescindiblesMovies
   );
   const siTuPerdisteMovies = useSelector(
     (state) => state.lists.siTuPerdisteMovies
   );
-  const especialXMenMovies = useSelector(
-    (state) => state.lists.especialXMenMovies
+  const loadedPopularesMovies = useSelector(
+    (state) => state.lists.loadedPopularesMovies
   );
-  const loadingList = useSelector((state) => state.lists.loading);
+  const loadedTodaLaFamiliaMovies = useSelector(
+    (state) => state.lists.loadedTodaLaFamiliaMovies
+  );
+  const loadedEstrenosSpaniolesMovies = useSelector(
+    (state) => state.lists.loadedEstrenosSpaniolesMovies
+  );
+  const loadedEstrenosImprescindiblesMovies = useSelector(
+    (state) => state.lists.loadedEstrenosImprescindiblesMovies
+  );
+  const loadedSiTuPerdisteMovies = useSelector(
+    (state) => state.lists.loadedSiTuPerdisteMovies
+  );
+
+  const loading = useSelector((state) => state.lists.loading);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -48,8 +58,13 @@ const Home = () => {
     }
     fetchMovies();
   }, []);
-  if (!loadingList) {
-    console.log('home', siTuPerdisteMovies);
+  if (
+    loadedPopularesMovies &&
+    loadedTodaLaFamiliaMovies &&
+    loadedEstrenosSpaniolesMovies &&
+    loadedEstrenosImprescindiblesMovies &&
+    loadedSiTuPerdisteMovies
+  ) {
     return (
       <PageContainer>
         <Carousel list={popularesMovies} />
@@ -60,7 +75,7 @@ const Home = () => {
       </PageContainer>
     );
   } else {
-    return null;
+    return <Loader />;
   }
 };
 

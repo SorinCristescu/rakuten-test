@@ -12,9 +12,14 @@ import {
 } from './types';
 
 describe('listsReducer Reducer', () => {
-  const initialMockState = {
+  const initialState = {
     errorCode: null,
     loading: false,
+    loadedPopularesMovies: false,
+    loadedTodaLaFamiliaMovies: false,
+    loadedEstrenosSpaniolesMovies: false,
+    loadedEstrenosImprescindiblesMovies: false,
+    loadedSiTuPerdisteMovies: false,
     popularesMovies: [],
     todaLaFamiliaMovies: [],
     estrenosSpaniolesMovies: [],
@@ -25,17 +30,22 @@ describe('listsReducer Reducer', () => {
   it('returns the initial state when an action type is not passed', () => {
     const reducer = listsReducer(undefined, {});
 
-    expect(reducer).toEqual(initialMockState);
+    expect(reducer).toEqual(initialState);
   });
 
   it('handles GET_MOVIES_POPULARES_START as expected', () => {
-    const reducer = listsReducer(initialMockState, {
+    const reducer = listsReducer(initialState, {
       type: GET_MOVIES_POPULARES_START,
     });
 
     expect(reducer).toEqual({
       errorCode: null,
       loading: true,
+      loadedPopularesMovies: false,
+      loadedTodaLaFamiliaMovies: false,
+      loadedEstrenosSpaniolesMovies: false,
+      loadedEstrenosImprescindiblesMovies: false,
+      loadedSiTuPerdisteMovies: false,
       estrenosImprescindiblesMovies: [],
       estrenosSpaniolesMovies: [],
       siTuPerdisteMovies: [],
@@ -45,7 +55,7 @@ describe('listsReducer Reducer', () => {
   });
 
   it('handles GET_MOVIES_POPULARES_SUCCESS as expected', () => {
-    const reducer = listsReducer(initialMockState, {
+    const reducer = listsReducer(initialState, {
       type: GET_MOVIES_POPULARES_SUCCESS,
       payload: [
         {
@@ -112,17 +122,27 @@ describe('listsReducer Reducer', () => {
       todaLaFamiliaMovies: [],
       errorCode: null,
       loading: false,
+      loadedPopularesMovies: true,
+      loadedTodaLaFamiliaMovies: false,
+      loadedEstrenosSpaniolesMovies: false,
+      loadedEstrenosImprescindiblesMovies: false,
+      loadedSiTuPerdisteMovies: false,
     });
   });
 
   it('handles GET_MOVIES_ESTRENOSIMPRESCINDIBLES_START as expected', () => {
-    const reducer = listsReducer(initialMockState, {
+    const reducer = listsReducer(initialState, {
       type: GET_MOVIES_ESTRENOSIMPRESCINDIBLES_START,
     });
 
     expect(reducer).toEqual({
       errorCode: null,
       loading: true,
+      loadedPopularesMovies: false,
+      loadedTodaLaFamiliaMovies: false,
+      loadedEstrenosSpaniolesMovies: false,
+      loadedEstrenosImprescindiblesMovies: false,
+      loadedSiTuPerdisteMovies: false,
       estrenosImprescindiblesMovies: [],
       estrenosSpaniolesMovies: [],
       siTuPerdisteMovies: [],
@@ -132,7 +152,7 @@ describe('listsReducer Reducer', () => {
   });
 
   it('handles GET_MOVIES_ESTRENOSIMPRESCINDIBLES_SUCCESS as expected', () => {
-    const reducer = listsReducer(initialMockState, {
+    const reducer = listsReducer(initialState, {
       type: GET_MOVIES_ESTRENOSIMPRESCINDIBLES_SUCCESS,
       payload: [
         {
@@ -199,17 +219,27 @@ describe('listsReducer Reducer', () => {
       siTuPerdisteMovies: [],
       errorCode: null,
       loading: false,
+      loadedPopularesMovies: false,
+      loadedTodaLaFamiliaMovies: false,
+      loadedEstrenosSpaniolesMovies: true,
+      loadedEstrenosImprescindiblesMovies: false,
+      loadedSiTuPerdisteMovies: false,
     });
   });
 
   it('handles GET_MOVIES_TODALAFAMILIA_START as expected', () => {
-    const reducer = listsReducer(initialMockState, {
+    const reducer = listsReducer(initialState, {
       type: GET_MOVIES_TODALAFAMILIA_START,
     });
 
     expect(reducer).toEqual({
       errorCode: null,
       loading: true,
+      loadedPopularesMovies: false,
+      loadedTodaLaFamiliaMovies: false,
+      loadedEstrenosSpaniolesMovies: false,
+      loadedEstrenosImprescindiblesMovies: false,
+      loadedSiTuPerdisteMovies: false,
       estrenosImprescindiblesMovies: [],
       estrenosSpaniolesMovies: [],
       siTuPerdisteMovies: [],
@@ -219,7 +249,7 @@ describe('listsReducer Reducer', () => {
   });
 
   it('handles GET_MOVIES_TODALAFAMILIA_SUCCESS as expected', () => {
-    const reducer = listsReducer(initialMockState, {
+    const reducer = listsReducer(initialState, {
       type: GET_MOVIES_TODALAFAMILIA_SUCCESS,
       payload: [
         {
@@ -286,17 +316,27 @@ describe('listsReducer Reducer', () => {
       popularesMovies: [],
       errorCode: null,
       loading: false,
+      loadedPopularesMovies: false,
+      loadedTodaLaFamiliaMovies: true,
+      loadedEstrenosSpaniolesMovies: false,
+      loadedEstrenosImprescindiblesMovies: false,
+      loadedSiTuPerdisteMovies: false,
     });
   });
 
   it('handles GET_MOVIES_ESTRENOSESPANIOLES_START as expected', () => {
-    const reducer = listsReducer(initialMockState, {
+    const reducer = listsReducer(initialState, {
       type: GET_MOVIES_ESTRENOSESPANIOLES_START,
     });
 
     expect(reducer).toEqual({
       errorCode: null,
       loading: true,
+      loadedPopularesMovies: false,
+      loadedTodaLaFamiliaMovies: false,
+      loadedEstrenosSpaniolesMovies: false,
+      loadedEstrenosImprescindiblesMovies: false,
+      loadedSiTuPerdisteMovies: false,
       estrenosImprescindiblesMovies: [],
       estrenosSpaniolesMovies: [],
       siTuPerdisteMovies: [],
@@ -306,7 +346,7 @@ describe('listsReducer Reducer', () => {
   });
 
   it('handles GET_MOVIES_ESTRENOSESPANIOLES_SUCCESS as expected', () => {
-    const reducer = listsReducer(initialMockState, {
+    const reducer = listsReducer(initialState, {
       type: GET_MOVIES_ESTRENOSESPANIOLES_SUCCESS,
       payload: [
         {
@@ -373,11 +413,16 @@ describe('listsReducer Reducer', () => {
       todaLaFamiliaMovies: [],
       errorCode: null,
       loading: false,
+      loadedPopularesMovies: false,
+      loadedTodaLaFamiliaMovies: false,
+      loadedEstrenosSpaniolesMovies: true,
+      loadedEstrenosImprescindiblesMovies: false,
+      loadedSiTuPerdisteMovies: false,
     });
   });
 
   it('handles GET_MOVIES_SI_TU_PERDISTE_START as expected', () => {
-    const reducer = listsReducer(initialMockState, {
+    const reducer = listsReducer(initialState, {
       type: GET_MOVIES_SI_TU_PERDISTE_START,
     });
 
@@ -389,6 +434,11 @@ describe('listsReducer Reducer', () => {
       todaLaFamiliaMovies: [],
       errorCode: null,
       loading: false,
+      loadedPopularesMovies: false,
+      loadedTodaLaFamiliaMovies: false,
+      loadedEstrenosSpaniolesMovies: false,
+      loadedEstrenosImprescindiblesMovies: false,
+      loadedSiTuPerdisteMovies: false,
     });
   });
 });
