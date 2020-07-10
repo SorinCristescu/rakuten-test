@@ -7,7 +7,7 @@ import { withRouter } from 'react-router-dom';
 
 // Components
 import Loader from '../../components/Loader';
-
+import 'node_modules/video-react/dist/video-react.css';
 import { Player, BigPlayButton } from 'video-react';
 import { TrailerPageContainer } from './style';
 
